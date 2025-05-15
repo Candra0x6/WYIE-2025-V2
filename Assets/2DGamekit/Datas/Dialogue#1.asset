@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ab85a3bb7bcc64f8c03d2af6f54ca3, type: 3}
+  m_Name: Dialogue#1
+  m_EditorClassIdentifier: 
+  nodes:
+  - speakerName: Buydiu
+    speakerImage: {fileID: 0}
+    text: dasassadasdadasdadsa
+    options:
+    - text: a
+      nextNodeIndex: 1
+    nextNodeIndex: -1
+  - speakerName: asassa
+    speakerImage: {fileID: 0}
+    text: asaasssss
+    options: []
+    nextNodeIndex: -1
+  startDialogueSound: {fileID: 0}
+  advanceDialogueSound: {fileID: 0}

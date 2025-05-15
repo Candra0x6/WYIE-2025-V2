@@ -1,0 +1,32 @@
+{
+    "quizTitle": "Basic Enemy Quiz",
+    "questions": [
+        {
+            "question": "What is 2+2?",
+            "answers": ["3", "4", "5", "6"],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "Which color is not in the rainbow?",
+            "answers": ["Red", "Brown", "Blue", "Green"],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "Who is the main character in this game?",
+            "answers": ["Ellen", "Mario", "Sonic", "Link"],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What happens when you get all questions right?",
+            "answers": ["Enemy takes damage", "You get points", "Nothing", "Enemy explodes"],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What language is Unity primarily scripted in?",
+            "answers": ["JavaScript", "C++", "C#", "Python"],
+            "correctAnswerIndex": 2
+        }
+    ],
+    "damageToEnemyOnCorrect": 1,
+    "damageToPlayerOnWrong": 1
+}
