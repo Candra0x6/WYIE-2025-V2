@@ -62,8 +62,7 @@ namespace Gamekit2D.Dialogue
             {
                 AdvanceDialogue();
             }
-        }
-          public void StartDialogue(DialogueData dialogueData)
+        }        public void StartDialogue(DialogueData dialogueData)
         {
             if (dialogueData == null || dialogueData.nodes.Count == 0)
                 return;
@@ -92,14 +91,24 @@ namespace Gamekit2D.Dialogue
             if (dialogueData.startDialogueSound != null && dialogueAudioPlayer != null)
                 dialogueAudioPlayer.PlayRandomSound();
                 
-            // Show dialogue panel
-            dialoguePanel.SetActive(true);
+            // Show dialogue panel and ensure UI elements are active
+            if (dialoguePanel != null)
+            {
+                dialoguePanel.SetActive(true);
+                
+                // Ensure speaker name element is active
+                if (speakerNameText != null && speakerNameText.transform.parent != null)
+                    speakerNameText.transform.parent.gameObject.SetActive(true);
+                
+                // Ensure dialogue text element is active
+                if (dialogueText != null && dialogueText.transform.parent != null)
+                    dialogueText.transform.parent.gameObject.SetActive(true);
+            }
             
             // Display the first node
             DisplayNode(dialogueData.GetStartNode());
         }
-        
-        private void DisplayNode(DialogueNode node)
+          private void DisplayNode(DialogueNode node)
         {
             if (node == null)
             {
@@ -107,16 +116,27 @@ namespace Gamekit2D.Dialogue
                 return;
             }
             
-            // Set speaker name
-            speakerNameText.text = node.speakerName;
+            // Set speaker name (ensure the text component is active)
+            if (speakerNameText != null)
+            {
+                if (speakerNameText.transform.parent != null)
+                    speakerNameText.transform.parent.gameObject.SetActive(true);
+                speakerNameText.gameObject.SetActive(true);
+                speakerNameText.text = node.speakerName;
+            }
             
             // Set speaker image if available
             if (node.speakerImage != null)
             {
-                speakerImageContainer.SetActive(true);
-                speakerImage.sprite = node.speakerImage;
+                if (speakerImageContainer != null)
+                    speakerImageContainer.SetActive(true);
+                if (speakerImage != null)
+                {
+                    speakerImage.gameObject.SetActive(true);
+                    speakerImage.sprite = node.speakerImage;
+                }
             }
-            else
+            else if (speakerImageContainer != null)
             {
                 speakerImageContainer.SetActive(false);
             }

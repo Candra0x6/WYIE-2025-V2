@@ -29,15 +29,33 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/2DGamekit/Scenes/UI/Loading.unity
     guid: ebc4647ff02971c4ba1b207af066be4d
-  - enabled: 1
-    path: Assets/NewScene.unity
-    guid: 570aa12a9c1ca8e43985d2abbbe23fb3
   - enabled: 0
     path: Assets/NewScene.unity
-    guid: 570aa12a9c1ca8e43985d2abbbe23fb3
+    guid: b6716c4d8165eb04c94ee4f57798624b
+  - enabled: 0
+    path: Assets/NewScene.unity
+    guid: b6716c4d8165eb04c94ee4f57798624b
   - enabled: 0
     path: Assets/Level2.unity
     guid: 7336581361f07964ca86779c6dbb3ce2
+  - enabled: 0
+    path: Assets/NewScene.unity
+    guid: b6716c4d8165eb04c94ee4f57798624b
+  - enabled: 0
+    path: Assets/Scenes/TES.unity
+    guid: 26bdf247772c3a1469c57e1adffda3bb
+  - enabled: 1
+    path: Assets/Scenes/World 1.unity
+    guid: bb353e8feb1e8dd44bdc3d6adce09541
+  - enabled: 1
+    path: Assets/Scenes/World 2.unity
+    guid: 6e905169cd6315347bf6ec7be6fd67e6
+  - enabled: 1
+    path: Assets/Scenes/World 3.unity
+    guid: 600d4b622b38d2c4db7751bfcd0d986f
+  - enabled: 1
+    path: Assets/NewScene.unity
+    guid: 0102ef8018346bb40a6b9aaf95d2d4ba
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 358996056c3861e4b9a9375018e2eea3, type: 2}

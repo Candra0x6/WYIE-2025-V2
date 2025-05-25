@@ -18,6 +18,6 @@ MonoBehaviour:
   requiredAmount: 5
   healthBonus: 2
   rewardIcon: {fileID: 0}
-  startDialogue: {fileID: 0}
-  completeDialogue: {fileID: 0}
+  startDialogue: {fileID: 11400000, guid: ca0babf594a21934e8ea797ada8de0a3, type: 2}
+  completeDialogue: {fileID: 11400000, guid: ca0babf594a21934e8ea797ada8de0a3, type: 2}
   itemIcon: {fileID: 0}
