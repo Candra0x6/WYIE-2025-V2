@@ -16,14 +16,17 @@ namespace Gamekit2D.Mission
             public bool isCompleted;
             public int currentAmount;
         }
+          [System.Serializable]
+        public class MissionEvent : UnityEvent<MissionData, int, int> { } // mission, current, required
         
         [System.Serializable]
-        public class MissionEvent : UnityEvent<MissionData, int, int> { } // mission, current, required
+        public class MissionRemovedEvent : UnityEvent<MissionData> { } // mission that was removed
         
         [Header("Events")]
         public MissionEvent OnMissionAssigned;
         public MissionEvent OnMissionUpdated;
         public MissionEvent OnMissionCompleted;
+        public MissionRemovedEvent OnMissionRemoved; // New event for mission removal
         
         [Header("Data Persistence")]
         public DataSettings dataSettings;
@@ -166,9 +169,10 @@ namespace Gamekit2D.Mission
                 PersistentDataManager.SetDirty(this);
             }
         }
-        
-        public void CompleteMission(MissionData missionData)
+          public void CompleteMission(MissionData missionData)
         {
+            MissionInfo missionToRemove = null;
+            
             foreach (var mission in activeMissions)
             {
                 if (mission.missionData == missionData && mission.isCompleted)
@@ -182,9 +186,24 @@ namespace Gamekit2D.Mission
                         pendingItems.Remove(mission.missionData.targetItemID);
                     }
                     
+                    // Mark mission for removal
+                    missionToRemove = mission;
+                    
                     // Save mission data
                     PersistentDataManager.SetDirty(this);
-                    return;
+                    break;
+                }
+            }
+            
+            // Remove the mission from active missions
+            if (missionToRemove != null)
+            {
+                activeMissions.Remove(missionToRemove);
+                
+                // Trigger mission removed event
+                if (OnMissionRemoved != null)
+                {
+                    OnMissionRemoved.Invoke(missionToRemove.missionData);
                 }
             }
         }

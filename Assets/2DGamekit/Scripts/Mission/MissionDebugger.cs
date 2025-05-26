@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 
 namespace Gamekit2D.Mission
 {
@@ -7,30 +8,57 @@ namespace Gamekit2D.Mission
     public class MissionDebugger : MonoBehaviour
     {
         [Header("Mission Testing")]
-        public MissionData testMission;
+        public MissionData[] testMissions;
+        public int selectedMissionIndex = 0;
         public string testItemID;
-        
-        [ContextMenu("Assign Test Mission")]
+          [ContextMenu("Assign Test Mission")]
         public void AssignTestMission()
         {
-            if (testMission != null && MissionManager.Instance != null)
+            if (testMissions == null || testMissions.Length == 0 || MissionManager.Instance == null) return;
+            
+            // Make sure index is valid
+            selectedMissionIndex = Mathf.Clamp(selectedMissionIndex, 0, testMissions.Length - 1);
+            
+            MissionData selectedMission = testMissions[selectedMissionIndex];
+            if (selectedMission != null)
             {
-                MissionManager.Instance.AssignMission(testMission);
-                Debug.Log($"Assigned mission: {testMission.name}");
+                MissionManager.Instance.AssignMission(selectedMission);
+                Debug.Log($"Assigned mission: {selectedMission.name}");
             }
         }
         
         [ContextMenu("Complete Test Mission")]
         public void CompleteTestMission()
         {
-            if (testMission != null && MissionManager.Instance != null)
+            if (testMissions == null || testMissions.Length == 0 || MissionManager.Instance == null) return;
+            
+            // Make sure index is valid
+            selectedMissionIndex = Mathf.Clamp(selectedMissionIndex, 0, testMissions.Length - 1);
+            
+            MissionData selectedMission = testMissions[selectedMissionIndex];
+            if (selectedMission != null)
             {
-                int requiredAmount = testMission.requiredAmount;
+                int requiredAmount = selectedMission.requiredAmount;
                 for (int i = 0; i < requiredAmount; i++)
                 {
-                    MissionManager.Instance.UpdateMissionProgress(testMission.targetItemID);
+                    MissionManager.Instance.UpdateMissionProgress(selectedMission.targetItemID);
                 }
-                Debug.Log($"Completed mission: {testMission.name}");
+                Debug.Log($"Completed mission: {selectedMission.name}");
+            }
+        }
+        
+        [ContextMenu("Assign All Test Missions")]
+        public void AssignAllTestMissions()
+        {
+            if (testMissions == null || testMissions.Length == 0 || MissionManager.Instance == null) return;
+            
+            foreach (var mission in testMissions)
+            {
+                if (mission != null)
+                {
+                    MissionManager.Instance.AssignMission(mission);
+                    Debug.Log($"Assigned mission: {mission.name}");
+                }
             }
         }
         
@@ -50,13 +78,29 @@ namespace Gamekit2D.Mission
         {
             // Draw an icon for NPCs with missions
             MissionNPC missionNPC = GetComponent<MissionNPC>();
-            if (missionNPC != null && missionNPC.availableMission != null)
+            if (missionNPC != null && missionNPC.availableMissions != null && missionNPC.availableMissions.Length > 0)
             {
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawWireSphere(transform.position, 1f);
                 
                 Handles.color = Color.yellow;
-                Handles.Label(transform.position + Vector3.up * 1.5f, $"Mission: {missionNPC.availableMission.missionName}");
+                
+                string missionNames = "";
+                for (int i = 0; i < Mathf.Min(missionNPC.availableMissions.Length, 3); i++)
+                {
+                    if (missionNPC.availableMissions[i] != null)
+                    {
+                        if (i > 0) missionNames += ", ";
+                        missionNames += missionNPC.availableMissions[i].missionName;
+                    }
+                }
+                
+                if (missionNPC.availableMissions.Length > 3)
+                {
+                    missionNames += "...";
+                }
+                
+                Handles.Label(transform.position + Vector3.up * 1.5f, $"Missions: {missionNames}");
             }
         }
 #endif
