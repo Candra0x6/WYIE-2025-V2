@@ -80,11 +80,11 @@ namespace Gamekit2D.Mission
             // When inventory is loaded, we may need to update mission status
             CheckAllMissionsStatus();
         }
-        
+
         public void AssignMission(MissionData missionData)
         {
             if (missionData == null) return;
-            
+
             // Check if mission is already assigned
             foreach (var mission in activeMissions)
             {
@@ -98,7 +98,7 @@ namespace Gamekit2D.Mission
                     return;
                 }
             }
-            
+
             // Create new mission info
             MissionInfo newMission = new MissionInfo
             {
@@ -107,18 +107,19 @@ namespace Gamekit2D.Mission
                 isCompleted = false,
                 currentAmount = 0
             };
-            
+
             // Add to active missions
             activeMissions.Add(newMission);
-            
+
             // Trigger mission assigned event
             if (OnMissionAssigned != null)
             {
                 OnMissionAssigned.Invoke(missionData, 0, missionData.requiredAmount);
             }
-            
+
             // Save mission data
             PersistentDataManager.SetDirty(this);
+            PersistentDataManager.SaveAllData();
         }
         
         public void UpdateMissionProgress(string itemID, int amount = 1)

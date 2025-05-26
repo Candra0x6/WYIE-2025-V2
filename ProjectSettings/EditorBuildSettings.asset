@@ -31,16 +31,16 @@ EditorBuildSettings:
     guid: ebc4647ff02971c4ba1b207af066be4d
   - enabled: 0
     path: Assets/NewScene.unity
-    guid: b6716c4d8165eb04c94ee4f57798624b
+    guid: 0102ef8018346bb40a6b9aaf95d2d4ba
   - enabled: 0
     path: Assets/NewScene.unity
-    guid: b6716c4d8165eb04c94ee4f57798624b
+    guid: 0102ef8018346bb40a6b9aaf95d2d4ba
   - enabled: 0
     path: Assets/Level2.unity
     guid: 7336581361f07964ca86779c6dbb3ce2
   - enabled: 0
     path: Assets/NewScene.unity
-    guid: b6716c4d8165eb04c94ee4f57798624b
+    guid: 0102ef8018346bb40a6b9aaf95d2d4ba
   - enabled: 0
     path: Assets/Scenes/TES.unity
     guid: 26bdf247772c3a1469c57e1adffda3bb
@@ -56,6 +56,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/NewScene.unity
     guid: 0102ef8018346bb40a6b9aaf95d2d4ba
+  - enabled: 1
+    path: Assets/Scenes/Zone1.unity
+    guid: b1605c6a1cadd9443b7737fbd6b44266
+  - enabled: 1
+    path: Assets/Scenes/Zone2.unity
+    guid: 26c079e7e1abff749a41380259f82ece
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 613bae3ff674ff84b88401f548f0f55d,
+      type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 358996056c3861e4b9a9375018e2eea3, type: 2}

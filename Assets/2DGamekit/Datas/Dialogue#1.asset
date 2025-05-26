@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - speakerName: Badeni
-    speakerImage: {fileID: 21300000, guid: aac9a30c9c349534990e2d84f22e7b28, type: 3}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: 'Hey, kid!
 
       What are you doing in the middle of the forest like this?
@@ -26,7 +26,8 @@ MonoBehaviour:
     options: []
     nextNodeIndex: 1
   - speakerName: Chandura
-    speakerImage: {fileID: 21300000, guid: aac9a30c9c349534990e2d84f22e7b28, type: 3}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: 'I''m looking for someone named Badeni.
 
       My father told me I could
@@ -36,17 +37,19 @@ MonoBehaviour:
     options: []
     nextNodeIndex: 2
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: Why are you looking for Badeni?
     options: []
     nextNodeIndex: 3
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: My father used to tell me stories about a brilliant scientist named Badeni.
     options: []
     nextNodeIndex: 4
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: "But he said the kingdom rejected his ideas and labeled him a heretic,
       so he chose to live in exile out here.\n\"Find him, and learn from him the
       knowledge of how the world truly works.\"\nThat\u2019s the last thing he ever
@@ -54,38 +57,41 @@ MonoBehaviour:
     options: []
     nextNodeIndex: 5
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: "What\u2019s your father\u2019s name, kid?\n"
     options: []
     nextNodeIndex: 6
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: Suroto
     options: []
     nextNodeIndex: 7
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: '(turns around and walks a few steps away)
 
 '
     options: []
     nextNodeIndex: 8
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: 'Hey! Wait!
 
 '
     options: []
     nextNodeIndex: 9
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: 'Do you know where I can find Badeni?
 
 '
     options: []
     nextNodeIndex: 10
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: 'Suroto... He was one of those scholars who gave up knowledge to serve
       the kingdom.
 
@@ -95,59 +101,64 @@ MonoBehaviour:
     options: []
     nextNodeIndex: 11
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: "W\u2013wait...\nAre you\u2026 Badeni?\n"
     options: []
     nextNodeIndex: 12
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: (.....)
     options: []
     nextNodeIndex: 13
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: "But my father wasn\u2019t a scientist.\nHe was just a spiritual teacher\u2026
       and a woodworker.\n"
     options: []
     nextNodeIndex: 14
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: (.....)
     options: []
     nextNodeIndex: 15
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: "Maybe you\u2019re thinking of someone else, sir\u2026\n"
     options: []
     nextNodeIndex: 16
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: (.....)
     options: []
     nextNodeIndex: 17
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: (.....)
     options: []
     nextNodeIndex: 18
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: "Woodworking\u2026 that was one of Suroto\u2019s favorite hobbies.\n\t"
     options: []
     nextNodeIndex: 19
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: "If I\u2019m right, the kingdom probably stopped him from spreading the
       knowledge he had.\nAs I suspected...\n"
     options: []
     nextNodeIndex: 20
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: "They\u2019re nothing but liars \u2014 wolves in sheep\u2019s clothing.\n"
     options: []
     nextNodeIndex: 21
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: 'If you really are Badeni,
 
       would you teach me?
@@ -156,22 +167,22 @@ MonoBehaviour:
     options: []
     nextNodeIndex: 22
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: (......)
     options: []
     nextNodeIndex: 23
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: "Your father\u2026 still causing me trouble even after death.\n"
     options: []
     nextNodeIndex: 24
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: Typical
     options: []
     nextNodeIndex: 25
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: 'Even though I hated him for what he did,
 
       that was the dying wish
@@ -181,27 +192,29 @@ MonoBehaviour:
     options: []
     nextNodeIndex: 26
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: "Alright. I\u2019ll teach you.\n"
     options: []
     nextNodeIndex: 27
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: Thank you so much for agreeing to teach me!
     options: []
     nextNodeIndex: 28
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: "We start our first lesson now.\n\t"
     options: []
     nextNodeIndex: 29
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: "B-but\u2026 Master Badeni, I just got here\u2026\nI\u2019m really tired\u2026\n"
     options: []
     nextNodeIndex: 30
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: 'Rule number one when studying with me:
 
       Never complain in front
@@ -211,14 +224,15 @@ MonoBehaviour:
     options: []
     nextNodeIndex: 31
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: '(.....)
 
 '
     options: []
     nextNodeIndex: 32
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: 'Your first lesson is food gathering.
 
 
@@ -226,48 +240,50 @@ MonoBehaviour:
     options: []
     nextNodeIndex: 33
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: Can you count?
     options: []
     nextNodeIndex: 34
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: "I\u2026 I can\u2019t count yet"
     options: []
     nextNodeIndex: 35
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: Alright.
     options: []
     nextNodeIndex: 36
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: "Here \u2014 take these.\n"
     options: []
     nextNodeIndex: 37
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: '(Hands Chandura five small stones)
 
 '
     options: []
     nextNodeIndex: 38
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: 'Now go find the same number of apples as there are stones.
 
 '
     options: []
     nextNodeIndex: 39
   - speakerName: Badeni
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 21300000, guid: 220d7309bda43c647926b7c789879ddc, type: 3}
     text: 'Come back to me when you are done.
 
 '
     options: []
     nextNodeIndex: 40
   - speakerName: Chandura
-    speakerImage: {fileID: 0}
+    speakerImage: {fileID: 3699765714879483155, guid: b9287d84da3945e49bd95e2e736bb95c,
+      type: 3}
     text: "Yes,\_Master\_Badeni!"
     options: []
     nextNodeIndex: -1
