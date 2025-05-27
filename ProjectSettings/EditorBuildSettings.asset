@@ -62,6 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zone2.unity
     guid: 26c079e7e1abff749a41380259f82ece
+<<<<<<< HEAD
   - enabled: 1
     path: Assets/Scenes/Zone3.unity
     guid: faaa03273f115264c828c526e1238a94
@@ -71,6 +72,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zone5.unity
     guid: 22fc8b52aadb746458de8fcfac971d20
+=======
+>>>>>>> 40b38986461a62affd848f94b1ab4797c2eadee9
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 613bae3ff674ff84b88401f548f0f55d,
       type: 2}
