@@ -9,6 +9,7 @@ namespace Gamekit2D.Mission
     /// </summary>
     public class MissionListUI : MonoBehaviour
     {
+        public static MissionListUI Instance { get; private set; } // Singleton instance
         [Header("UI References")]
         public GameObject missionListPanel;        // The main panel containing all missions
         public GameObject missionEntryPrefab;      // Prefab for each mission entry (contains name, progress, etc.)
@@ -27,6 +28,17 @@ namespace Gamekit2D.Mission
         private void Awake()
         {
             // Hide panel at start
+             if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else if (Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
             if (missionListPanel != null)
                 missionListPanel.SetActive(false);
                 
@@ -36,13 +48,19 @@ namespace Gamekit2D.Mission
         }
           private void OnEnable()
         {
+                Debug.Log("MissionListUI OnEnable called");
+
             // Subscribe to mission events
             if (MissionManager.Instance != null)
             {
+                        Debug.Log("Found MissionManager.Instance");
+
                 MissionManager.Instance.OnMissionAssigned.AddListener(HandleMissionAssigned);
                 MissionManager.Instance.OnMissionUpdated.AddListener(HandleMissionUpdated);
                 MissionManager.Instance.OnMissionCompleted.AddListener(HandleMissionCompleted);
                 MissionManager.Instance.OnMissionRemoved.AddListener(RemoveMissionEntry);
+            } else {
+                Debug.LogWarning("MissionManager.Instance is null in MissionListUI.OnEnable");
             }
         }
         
@@ -77,9 +95,12 @@ namespace Gamekit2D.Mission
         }        // Add new mission to the list when assigned
         public void HandleMissionAssigned(MissionData missionData, int current, int required)
         {
+            // Debug log for mission assignment
+            Debug.Log($"Mission assigned: {missionData.missionName} (Current: {current}, Required: {required})");
             // Create mission entry if it doesn't exist
             if (!missionEntries.ContainsKey(missionData))
             {
+                Debug.Log($"Creating mission entry for: {missionData}");
                 CreateMissionEntry(missionData, current, required);
             }
             
@@ -115,6 +136,7 @@ namespace Gamekit2D.Mission
           // Create a new UI entry for a mission
         private void CreateMissionEntry(MissionData missionData, int current, int required)
         {
+                Debug.Log($"CreateMissionEntry called for {missionData.missionName}");
             if (missionEntryPrefab == null || missionEntryContainer == null) return;
             
             // Instantiate mission entry prefab
@@ -127,11 +149,13 @@ namespace Gamekit2D.Mission
             MissionEntryUI entryUI = entryObj.GetComponent<MissionEntryUI>();
             if (entryUI != null)
             {
+                Debug.Log($"Setting up MissionEntryUI for {missionData.missionName}");
                 // Use the component's setup method
                 entryUI.Setup(missionData, current, required, false);
             }
             else
             {
+                Debug.LogWarning($"MissionEntryUI component not found on prefab for {missionData.missionName}. Using manual update.");
                 // Fall back to manual update
                 UpdateMissionEntryUI(entryObj, missionData, current, required);
             }
@@ -146,7 +170,8 @@ namespace Gamekit2D.Mission
             if (entryUI != null)
             {
                 // Use the component's setup method
-                entryUI.Setup(missionData, current, required, completed);
+                entryUI.Setup(missionData, current, required, completed);                
+                
             }
             else
             {

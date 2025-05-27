@@ -17,10 +17,11 @@ namespace Gamekit2D.Dialogue
         public GameObject optionsPanel;
         public Button optionButtonPrefab;
         public GameObject continuePrompt;
+        public Button continueButton; // Button for clicking to continue (mobile support)
         
         [Header("Settings")]
-        public float textDisplaySpeed = 0.05f;
-        public float delayAfterDialogue = 0.5f;
+        public float textDisplaySpeed = 0.05f;        public float delayAfterDialogue = 0.5f;
+        public bool makeDialogueTextClickable = true; // Option to make dialogue text area clickable for mobile
         
         [Header("Audio")]
         public RandomAudioPlayer dialogueAudioPlayer;
@@ -31,14 +32,80 @@ namespace Gamekit2D.Dialogue
         private Coroutine textDisplayCoroutine;
         private bool isDisplayingText;
         private bool hasCompletedTextDisplay;
-        
-        private void Awake()
+        private Button dialogueTextButton; // Button component for dialogue text area
+          private void Awake()
         {
             // Ensure dialogue panel is hidden at start
             if (dialoguePanel != null)
                 dialoguePanel.SetActive(false);
                 
             playerCharacter = PlayerCharacter.PlayerInstance;
+              // Set up continue button for mobile support
+            if (continueButton == null && continuePrompt != null)
+            {
+                // Try to find a button component on the continue prompt
+                continueButton = continuePrompt.GetComponent<Button>();
+                
+                // If no button exists, try to add one
+                if (continueButton == null && continuePrompt.activeSelf)
+                {
+                    continueButton = continuePrompt.AddComponent<Button>();
+                    
+                    // If the continue prompt has an image, use it as the target graphic
+                    Image promptImage = continuePrompt.GetComponent<Image>();
+                    if (promptImage != null)
+                    {
+                        continueButton.targetGraphic = promptImage;
+                    }
+                }
+                
+                // Add click listener
+                if (continueButton != null)
+                {
+                    continueButton.onClick.AddListener(AdvanceDialogue);
+                }
+            }
+            
+            // Make dialogue text area clickable for mobile support
+            if (makeDialogueTextClickable && dialogueText != null)
+            {
+                // Check if the dialogue text's parent has a button component
+                Transform textParent = dialogueText.transform.parent;
+                if (textParent != null)
+                {
+                    dialogueTextButton = textParent.GetComponent<Button>();
+                    
+                    // If no button exists, add one
+                    if (dialogueTextButton == null)
+                    {
+                        dialogueTextButton = textParent.gameObject.AddComponent<Button>();
+                        
+                        // If the parent has an image, use it as the target graphic
+                        Image parentImage = textParent.GetComponent<Image>();
+                        if (parentImage != null)
+                        {
+                            dialogueTextButton.targetGraphic = parentImage;
+                        }
+                    }
+                    
+                    // Set the navigation to none to avoid UI navigation issues
+                    Navigation nav = dialogueTextButton.navigation;
+                    nav.mode = Navigation.Mode.None;
+                    dialogueTextButton.navigation = nav;
+                    
+                    // Add click listener
+                    dialogueTextButton.onClick.AddListener(() => {
+                        if (isDisplayingText && !hasCompletedTextDisplay)
+                        {
+                            SkipToEndOfText();
+                        }
+                        else if (hasCompletedTextDisplay && !optionsPanel.activeInHierarchy)
+                        {
+                            AdvanceDialogue();
+                        }
+                    });
+                }
+            }
         }
           private void Update()
         {
@@ -172,8 +239,7 @@ namespace Gamekit2D.Dialogue
             // Show continue prompt or dialogue options
             ShowNodeCompletion();
         }
-        
-        private void SkipToEndOfText()
+          private void SkipToEndOfText()
         {
             if (textDisplayCoroutine != null)
                 StopCoroutine(textDisplayCoroutine);
@@ -187,8 +253,7 @@ namespace Gamekit2D.Dialogue
             // Show continue prompt or dialogue options
             ShowNodeCompletion();
         }
-        
-        private void ShowNodeCompletion()
+          private void ShowNodeCompletion()
         {
             DialogueNode currentNode = currentDialogue.GetNode(currentNodeIndex);
             
@@ -196,17 +261,47 @@ namespace Gamekit2D.Dialogue
             if (currentNode.options != null && currentNode.options.Count > 0)
             {
                 DisplayOptions(currentNode);
+                // Hide continue prompt when showing options
+                continuePrompt.SetActive(false);
             }
             else
             {
-                // Otherwise show continue prompt
+                // Otherwise show continue prompt and ensure button is active
                 continuePrompt.SetActive(true);
+                
+                // Make sure continue button is set up for mobile
+                if (continueButton == null && continuePrompt != null)
+                {
+                    // Try to find a button component on the continue prompt
+                    continueButton = continuePrompt.GetComponent<Button>();
+                    
+                    // If no button exists, add one
+                    if (continueButton == null)
+                    {
+                        continueButton = continuePrompt.AddComponent<Button>();
+                        
+                        // If the continue prompt has an image, use it as the target graphic
+                        Image promptImage = continuePrompt.GetComponent<Image>();
+                        if (promptImage != null)
+                        {
+                            continueButton.targetGraphic = promptImage;
+                        }
+                        
+                        // Add click listener
+                        continueButton.onClick.AddListener(AdvanceDialogue);
+                    }
+                }
             }
         }
-        
-        private void DisplayOptions(DialogueNode node)
+          private void DisplayOptions(DialogueNode node)
         {
             optionsPanel.SetActive(true);
+            
+            // Disable dialogue text button when showing options
+            if (dialogueTextButton != null)
+            {
+                dialogueTextButton.interactable = false;
+            }
             
             for (int i = 0; i < node.options.Count; i++)
             {
@@ -233,6 +328,12 @@ namespace Gamekit2D.Dialogue
             }
             
             optionsPanel.SetActive(false);
+            
+            // Re-enable dialogue text button
+            if (dialogueTextButton != null)
+            {
+                dialogueTextButton.interactable = true;
+            }
         }
         
         private void OnOptionSelected(int optionIndex)
@@ -303,6 +404,18 @@ namespace Gamekit2D.Dialogue
             currentDialogue = null;
             isDisplayingText = false;
             hasCompletedTextDisplay = false;
+        }        private void OnDestroy()
+        {
+            // Clean up button listeners to avoid memory leaks
+            if (continueButton != null)
+            {
+                continueButton.onClick.RemoveAllListeners();
+            }
+            
+            if (dialogueTextButton != null)
+            {
+                dialogueTextButton.onClick.RemoveAllListeners();
+            }
         }
     }
 }

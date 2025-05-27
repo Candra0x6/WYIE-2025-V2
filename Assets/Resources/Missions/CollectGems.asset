@@ -17,7 +17,8 @@ MonoBehaviour:
   targetItemID: key
   requiredAmount: 5
   healthBonus: 2
-  rewardIcon: {fileID: 0}
+  rewardIcon: {fileID: 21300010, guid: fc49794cc535bef4f969645c4eb97b80, type: 3}
   startDialogue: {fileID: 11400000, guid: ca0babf594a21934e8ea797ada8de0a3, type: 2}
   completeDialogue: {fileID: 11400000, guid: ca0babf594a21934e8ea797ada8de0a3, type: 2}
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 3847422954259092206, guid: e7ff401a4a9b9b74ca01b4e8330002e6,
+    type: 3}
